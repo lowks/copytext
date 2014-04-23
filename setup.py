@@ -22,7 +22,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     py_modules=['copytext'],
-    install_requires = [
+    install_requires=[
         'openpyxl>=1.8.5',
     ]
 )

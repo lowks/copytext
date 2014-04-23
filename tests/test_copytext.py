@@ -6,6 +6,7 @@ import unittest2 as unittest
 
 import copytext
 
+
 class CopyTestCase(unittest.TestCase):
     """
     Test the Copy object.
@@ -29,7 +30,7 @@ class CopyTestCase(unittest.TestCase):
     def test_json(self):
         s = self.copy.json()
         data = json.loads(s)
-    
+
         self.assertTrue('attribution' in data)
         self.assertTrue('content' in data)
         self.assertTrue('example_list' in data)
@@ -45,6 +46,7 @@ class CopyTestCase(unittest.TestCase):
         self.assertIsInstance(example_list, list)
         self.assertIsInstance(example_list[0], list)
         self.assertEqual(example_list[0], ['term', 'definition'])
+
 
 class SheetTestCase(unittest.TestCase):
     """
@@ -75,6 +77,7 @@ class SheetTestCase(unittest.TestCase):
         error = self.sheet[65]
         self.assertTrue(isinstance(error, copytext.Error))
         self.assertEquals(error._error, 'COPY.content.65 [row index outside range]')
+
 
 class RowTestCase(unittest.TestCase):
     """
@@ -114,6 +117,7 @@ class RowTestCase(unittest.TestCase):
         self.assertTrue(isinstance(error, copytext.Error))
         self.assertEquals(error._error, 'COPY.content.1.2 [column index outside range]')
 
+
 class CellTypeTestCase(unittest.TestCase):
     """
     Test various cell "types".
@@ -138,6 +142,7 @@ class CellTypeTestCase(unittest.TestCase):
 
         self.assertEqual(val, '3:37 AM')
 
+
 class DummyCellWrapper(unicode):
     """
     Example of a cell wrapper class. A psuedo-implementation
@@ -149,7 +154,8 @@ class DummyCellWrapper(unicode):
         return self
 
     def __html__(self):
-        return u'<strong>%s</strong>' % self 
+        return u'<strong>%s</strong>' % self
+
 
 class CellWrapperTestCase(unittest.TestCase):
     """
@@ -167,6 +173,7 @@ class CellWrapperTestCase(unittest.TestCase):
         self.assertTrue(isinstance(cell, unicode))
         self.assertEqual(cell, 'Across-The-Top Header')
         self.assertEqual(cell.__html__(), '<strong>Across-The-Top Header</strong>')
+
 
 class ErrorTestCase(unittest.TestCase):
     """
