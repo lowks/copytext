@@ -24,5 +24,7 @@ setup(
     py_modules=['copytext'],
     install_requires=[
         'openpyxl>=1.8.5',
-    ]
+    ],
+    tests_require=['unittest2>=0.5.1'],
+    test_suite="tests",
 )
